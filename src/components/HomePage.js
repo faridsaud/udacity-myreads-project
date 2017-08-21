@@ -4,10 +4,11 @@
 import React, {Component} from 'react';
 import AddButton from "./AddButton";
 import BookShelf from "./BookShelf";
+import PropTypes from 'prop-types';
 
 
-class HomePage extends Component{
-    render(){
+class HomePage extends Component {
+    render() {
         return (
             <div className="list-books">
                 <div className="list-books-title">
@@ -15,15 +16,21 @@ class HomePage extends Component{
                 </div>
                 <div className="list-books-content">
                     <div>
-                        <BookShelf bookshelf={{name: "Currently Reading"}}/>
+                        {
+                            this.props.bookShelfs.map((bookShelf, index)=>{
+                                return <BookShelf key={index} bookShelf={bookShelf}/>
+                            })
+                        }
                     </div>
                 </div>
                 <AddButton/>
             </div>
-            )
+        )
 
     }
-
 }
 
+HomePage.propTypes = {
+    bookShelfs:PropTypes.array.isRequired
+};
 export default HomePage;
