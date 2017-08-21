@@ -42,3 +42,6 @@ export const search = (query, maxResults) =>
     body: JSON.stringify({ query, maxResults })
   }).then(res => res.json())
     .then(data => data.books)
+export const getBookShelfsCategories = ()=>{
+    return [{name:"wantToRead", displayName:"Want to Read"}, {name:"currentlyReading", displayName:"Currently Reading"}, {name:"read", displayName:"Read"}];
+};

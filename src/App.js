@@ -15,9 +15,6 @@ class BooksApp extends React.Component {
         return bookShelfsFiltered[0].displayName;
     }
 
-    getBookShelfsCategories(){
-        return [{name:"wantToRead", displayName:"Want to Read"}, {name:"currentlyReading", displayName:"Currently Reading"}, {name:"read", displayName:"Read"}];
-    }
     state ={
         books:[],
         bookShelfs: []
@@ -26,7 +23,7 @@ class BooksApp extends React.Component {
     componentDidMount() {
         BooksAPI.getAll().then((books) => {
             console.log(books);
-            let bookShelfs =  this.getBookShelfsCategories();
+            let bookShelfs =  BooksAPI.getBookShelfsCategories();
             bookShelfs.map(bookShelf =>{
                 bookShelf.books = books.filter(book => book.shelf===bookShelf.name);
             });
