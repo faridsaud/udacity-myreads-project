@@ -8,9 +8,11 @@ import PropTypes from 'prop-types';
 class AddButton extends Component{
     render(){
         return (
-            <div className="open-search">
-                <a onClick={() => this.setState({})}>Add a book</a>
-            </div>
+            <Link to="/search">
+                <div className="open-search">
+                    <a>Add a book</a>
+                </div>
+            </Link>
         )
     }
 }
