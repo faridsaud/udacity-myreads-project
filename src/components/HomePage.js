@@ -8,6 +8,14 @@ import PropTypes from 'prop-types';
 
 
 class HomePage extends Component {
+    getBookCategories(){
+        return this.props.bookShelfs.map(bookShelf=>{
+            return {
+                name: bookShelf.name,
+                displayName: bookShelf.displayName
+            }
+        })
+    }
     render() {
         return (
             <div className="list-books">
@@ -18,7 +26,7 @@ class HomePage extends Component {
                     <div>
                         {
                             this.props.bookShelfs.map((bookShelf, index)=>{
-                                return <BookShelf key={index} bookShelf={bookShelf}/>
+                                return <BookShelf key={index} bookShelf={bookShelf} bookCategories ={this.getBookCategories()}/>
                             })
                         }
                     </div>
