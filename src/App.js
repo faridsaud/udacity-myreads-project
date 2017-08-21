@@ -4,8 +4,12 @@ import SearchBar from "./components/SearchBar";
 import HomePage from "./components/HomePage";
 import {Route} from 'react-router-dom';
 import * as BooksAPI from './BooksAPI'
+import BookSearchHomePage from "./components/BookSearchHomePage";
 
 class BooksApp extends React.Component {
+    state ={
+        bookShelfs: []
+    };
 
 
     getDislayName(name){
@@ -15,10 +19,14 @@ class BooksApp extends React.Component {
         return bookShelfsFiltered[0].displayName;
     }
 
-
-    state ={
-        bookShelfs: []
-    };
+    getBookCategories=()=>{
+        return this.state.bookShelfs.map(bookShelf=>{
+            return {
+                name: bookShelf.name,
+                displayName: bookShelf.displayName
+            }
+        })
+    }
 
     componentDidMount() {
         BooksAPI.getAll().then((books) => {
@@ -39,9 +47,11 @@ class BooksApp extends React.Component {
         return (
             <div className="app">
                 <Route exact path='/' render={() => (
-                    <HomePage bookShelfs={this.state.bookShelfs}/>
+                    <HomePage bookShelfs={this.state.bookShelfs} getBookCategories={this.getBookCategories}/>
                 )}/>
-                <Route path='/search' component={SearchBar}/>
+                <Route path='/search'  render={()=>(
+                    <BookSearchHomePage getBookCategories={this.getBookCategories}/>
+                )}/>
             </div>
         )
     }
