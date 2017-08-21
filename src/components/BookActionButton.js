@@ -2,8 +2,6 @@
  * Created by farid on 8/15/2017.
  */
 import React, {Component} from 'react';
-import {Link} from 'react-router-dom';
-import PropTypes from 'prop-types';
 
 class BookActionButton extends Component{
     render(){

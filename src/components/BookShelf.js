@@ -2,7 +2,6 @@
  * Created by farid on 8/15/2017.
  */
 import React, {Component} from 'react';
-import {Link} from 'react-router-dom';
 import Book from "./Book";
 import PropTypes from 'prop-types';
 
