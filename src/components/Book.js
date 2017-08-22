@@ -9,9 +9,14 @@ import * as BooksAPI from '../BooksAPI';
 class Book extends Component {
 
     updateBookCategory=(event)=> {
-        BooksAPI.update(this.props.book, event.target.value)
+        let book = this.props.book;
+        let shelf = event.target.value;
+        console.log(book);
+        console.log(shelf);
+        BooksAPI.update(book, shelf)
             .then(data =>{
                 console.log(data);
+                this.props.swapBookFromBookShelf(book, shelf);
             })
     };
 
@@ -39,7 +44,8 @@ Book.propTypes = {
         authors: PropTypes.string.isRequired,
         coverUrl: PropTypes.string.isRequired
     }),
-    bookCategories:PropTypes.array.isRequired
+    bookCategories:PropTypes.array.isRequired,
+    swapBookFromBookShelf:PropTypes.func.isRequired
 };
 
 export default Book;

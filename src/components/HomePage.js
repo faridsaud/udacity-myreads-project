@@ -19,7 +19,7 @@ class HomePage extends Component {
                     <div>
                         {
                             this.props.bookShelfs.map((bookShelf, index)=>{
-                                return <BookShelf key={index} bookShelf={bookShelf} bookCategories ={this.props.getBookCategories()}/>
+                                return <BookShelf key={index} bookShelf={bookShelf} bookCategories ={this.props.getBookCategories()} swapBookFromBookShelf={this.props.swapBookFromBookShelf}/>
                             })
                         }
                     </div>
@@ -32,6 +32,8 @@ class HomePage extends Component {
 }
 
 HomePage.propTypes = {
-    bookShelfs:PropTypes.array.isRequired
+    bookShelfs:PropTypes.array.isRequired,
+    swapBookFromBookShelf:PropTypes.func.isRequired
+
 };
 export default HomePage;

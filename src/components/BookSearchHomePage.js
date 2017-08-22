@@ -5,6 +5,7 @@ import React, {Component} from 'react';
 import SearchBar from "./SearchBar";
 import SearchResults from "./SearchResults";
 import * as BooksAPI from '../BooksAPI'
+import PropTypes from 'prop-types';
 
 class BookSearchHomePage extends Component {
     state = {
@@ -31,12 +32,16 @@ class BookSearchHomePage extends Component {
         return (
             <div className="search-books">
                 <SearchBar onUpdateSearchTerm={this.updateSearchTerm}/>
-                <SearchResults books={this.state.books} bookCategories ={this.props.getBookCategories()}/>
+                <SearchResults books={this.state.books} bookCategories ={this.props.getBookCategories()} swapBookFromBookShelf={this.props.swapBookFromBookShelf}/>
             </div>
         )
 
     }
 }
+BookSearchHomePage.propTypes = {
+    getBookCategories:PropTypes.func.isRequired,
+    swapBookFromBookShelf:PropTypes.func.isRequired
 
+};
 
 export default BookSearchHomePage;
