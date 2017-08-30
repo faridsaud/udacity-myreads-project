@@ -1,10 +1,10 @@
 import React from 'react'
 import './App.css'
-import SearchBar from "./components/SearchBar";
 import HomePage from "./components/HomePage";
 import {Route} from 'react-router-dom';
 import * as BooksAPI from './BooksAPI'
 import BookSearchHomePage from "./components/BookSearchHomePage";
+import BookDetail from "./components/BookDetail";
 
 class BooksApp extends React.Component {
 
@@ -90,6 +90,9 @@ class BooksApp extends React.Component {
                 <Route path='/search' render={() => (
                     <BookSearchHomePage getBookCategories={this.getBookCategories}
                                         swapBookFromBookShelf={this.swapBookFromBookShelf}/>
+                )}/>
+                <Route path='/book/:id' render={(props) => (
+                    <BookDetail match={props.match}/>
                 )}/>
             </div>
         )
