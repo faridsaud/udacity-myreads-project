@@ -7,11 +7,12 @@ import {Link} from 'react-router-dom';
 class AddButton extends Component{
     render(){
         return (
-            <Link to="/search">
                 <div className="open-search">
-                    <a>Add a book</a>
+                    <Link to="/search">
+                        Add a book
+                    </Link>
+
                 </div>
-            </Link>
         )
     }
 }
