@@ -29,7 +29,6 @@ class HomePage extends Component {
                 <AddButton/>
             </div>
         )
-
     }
 }
 

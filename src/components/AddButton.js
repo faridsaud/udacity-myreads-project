@@ -11,7 +11,6 @@ class AddButton extends Component {
                 <Link to="/search">
                     Add a book
                 </Link>
-
             </div>
         )
     }

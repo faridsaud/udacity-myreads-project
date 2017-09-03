@@ -23,7 +23,6 @@ class BookSearchHomePage extends Component {
                     books
                 })
             });
-
     };
 
     render() {
@@ -34,7 +33,6 @@ class BookSearchHomePage extends Component {
                                swapBookFromBookShelf={this.props.swapBookFromBookShelf}/>
             </div>
         )
-
     }
 }
 

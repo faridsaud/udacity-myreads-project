@@ -34,7 +34,6 @@ class BookDetail extends Component {
                     <div>
                         <MuiThemeProvider>
                             <Card>
-
                                 <CardHeader title={book.title} subtitle={book.subtitle}
                                             avatar={url}
                                 />
