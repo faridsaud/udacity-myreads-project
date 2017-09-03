@@ -39,6 +39,20 @@ class BooksApp extends React.Component {
         this.setState(bookShelfs);
     };
 
+    /**
+     * @description Search the book shelf name of the book
+     * @param {Object} book
+     * @returns {String} book shelf name
+     */
+    searchBookShelfOfBook = (book) => {
+        for (let i = 0; i < this.state.bookShelfs.length; i++) {
+            let bookFound = this.state.bookShelfs[i].books.find((bookInBookShelf) => bookInBookShelf.id === book.id);
+            if (bookFound) {
+                return bookFound.shelf;
+            }
+        }
+        return undefined;
+    };
 
     /**
      * @description Move a book to a new book shelf
@@ -46,6 +60,7 @@ class BooksApp extends React.Component {
      * @param {String} destinyBookShelfName
      */
     moveBookToBookShelf = (book, destinyBookShelfName) => {
+        debugger;
         if (book.shelf && this.verifyBookExistanceInBookShelf(book.id, book.shelf)) {
             this.removeBookFromBookShelf(book.id, book.shelf);
         }
@@ -100,12 +115,13 @@ class BooksApp extends React.Component {
         return (
             <div className="app">
                 <Route exact path='/' render={() => (
-                    <HomePage bookShelfs={this.state.bookShelfs} bookShelfCategories={this.getBookShelfCategories()}
+                    <HomePage bookShelves={this.state.bookShelfs} bookShelfCategories={this.getBookShelfCategories()}
                               moveBookToBookShelf={this.moveBookToBookShelf}/>
                 )}/>
                 <Route path='/search' render={() => (
                     <BookSearchHomePage bookShelfCategories={this.getBookShelfCategories()}
-                                        moveBookToBookShelf={this.moveBookToBookShelf}/>
+                                        moveBookToBookShelf={this.moveBookToBookShelf}
+                                        searchBookShelfOfBook={this.searchBookShelfOfBook}/>
                 )}/>
                 <Route path='/book/:id' render={(props) => (
                     <BookDetail match={props.match}/>

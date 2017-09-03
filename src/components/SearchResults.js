@@ -8,14 +8,21 @@ import PropTypes from 'prop-types';
 class SearchResults extends Component {
 
     render() {
+        console.log(this.props.books);
         return (
             <div className="search-books-results">
                 <ol className="books-grid">
                     {
                         this.props.books.map((book, index) => {
                             if (book.shelf === undefined) {
-                                book.shelf = "none";
+                                let bookShelf = this.props.searchBookShelfOfBook(book);
+                                if(bookShelf){
+                                    book.shelf = bookShelf;
+                                }else{
+                                    book.shelf = "none";
+                                }
                             }
+
                             return <li key={index}><Book book={book} bookShelfCategories={this.props.bookShelfCategories}
                                                          moveBookToBookShelf={this.props.moveBookToBookShelf}/></li>
                         })
@@ -29,7 +36,8 @@ class SearchResults extends Component {
 SearchResults.propTypes = {
     books: PropTypes.array.isRequired,
     bookShelfCategories: PropTypes.array.isRequired,
-    moveBookToBookShelf: PropTypes.func.isRequired
+    moveBookToBookShelf: PropTypes.func.isRequired,
+    searchBookShelfOfBook: PropTypes.func.isRequired
 
 };
 

@@ -34,7 +34,8 @@ class BookSearchHomePage extends Component {
             <div className="search-books">
                 <SearchBar onUpdateSearchTerm={this.updateSearchTerm}/>
                 <SearchResults books={this.state.books} bookShelfCategories={this.props.bookShelfCategories}
-                               moveBookToBookShelf={this.props.moveBookToBookShelf}/>
+                               moveBookToBookShelf={this.props.moveBookToBookShelf}
+                               searchBookShelfOfBook={this.props.searchBookShelfOfBook}/>
             </div>
         )
     }
@@ -42,7 +43,8 @@ class BookSearchHomePage extends Component {
 
 BookSearchHomePage.propTypes = {
     bookShelfCategories: PropTypes.array.isRequired,
-    moveBookToBookShelf: PropTypes.func.isRequired
+    moveBookToBookShelf: PropTypes.func.isRequired,
+    searchBookShelfOfBook: PropTypes.func.isRequired
 
 };
 
