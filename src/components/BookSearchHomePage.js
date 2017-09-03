@@ -14,13 +14,11 @@ class BookSearchHomePage extends Component {
     };
 
     updateSearchTerm = (searchTerm) => {
-        console.log(searchTerm);
         this.setState({
             searchTerm
         });
         BooksAPI.search(searchTerm, 100)
             .then(books => {
-                console.log(books);
                 this.setState({
                     books
                 })
@@ -32,7 +30,7 @@ class BookSearchHomePage extends Component {
         return (
             <div className="search-books">
                 <SearchBar onUpdateSearchTerm={this.updateSearchTerm}/>
-                <SearchResults books={this.state.books} bookCategories ={this.props.getBookCategories()} swapBookFromBookShelf={this.props.swapBookFromBookShelf}/>
+                <SearchResults books={this.state.books} bookCategories={this.props.getBookCategories()} swapBookFromBookShelf={this.props.swapBookFromBookShelf}/>
             </div>
         )
 

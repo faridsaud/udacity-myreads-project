@@ -5,18 +5,16 @@ import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import * as BooksAPI from '../BooksAPI';
 import {
-    Card, CardActions, CardHeader, CardMedia, CardText, CardTitle, Chip, Divider, FlatButton,
-    MuiThemeProvider, RaisedButton
+    Card, CardActions, CardHeader, CardText, Chip, Divider, MuiThemeProvider, RaisedButton
 } from "material-ui";
-import {Link} from "react-router-dom";
 
 class BookDetail extends Component {
     state = {
         book: {}
     };
+
     componentDidMount = () => {
         BooksAPI.get(this.props.match.params.id).then((book) => {
-            console.log(book);
             this.setState({
                 book
             })
@@ -29,7 +27,6 @@ class BookDetail extends Component {
         if (this.state.book.imageLinks) {
             url = this.state.book.imageLinks.thumbnail;
         }
-        console.log(book);
         return (
             <div className="bookshelf">
                 <h2 className="bookshelf-title">Book description</h2>
@@ -71,5 +68,9 @@ class BookDetail extends Component {
         )
     }
 }
+
+BookDetail.propTypes = {
+    book: PropTypes.object.isRequired
+};
 
 export default BookDetail;

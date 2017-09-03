@@ -12,11 +12,8 @@ class Book extends Component {
     updateBookCategory = (event) => {
         let book = this.props.book;
         let shelf = event.target.value;
-        console.log(book);
-        console.log(shelf);
         BooksAPI.update(book, shelf)
-            .then(data => {
-                console.log(data);
+            .then(() => {
                 this.props.swapBookFromBookShelf(book, shelf);
             })
     };
@@ -46,7 +43,7 @@ Book.propTypes = {
         title: PropTypes.string.isRequired,
         id: PropTypes.string.isRequired,
         authors: PropTypes.string.isRequired,
-        coverUrl: PropTypes.string.isRequired
+        imageLinks: PropTypes.object.isRequired
     }),
     bookCategories: PropTypes.array.isRequired,
     swapBookFromBookShelf: PropTypes.func.isRequired
