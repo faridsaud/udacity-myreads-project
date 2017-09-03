@@ -42,7 +42,7 @@ export const search = (query, maxResults) =>
     }).then(res => res.json())
         .then(data => data.books)
 
-export const getBookShelfsCategories = () => {
+export const getBookShelfCategories = () => {
     return [{name: "wantToRead", displayName: "Want to Read"}, {
         name: "currentlyReading",
         displayName: "Currently Reading"

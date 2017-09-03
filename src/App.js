@@ -86,7 +86,7 @@ class BooksApp extends React.Component {
 
     componentDidMount() {
         BooksAPI.getAll().then((books) => {
-            let bookShelfs = BooksAPI.getBookShelfsCategories();
+            let bookShelfs = BooksAPI.getBookShelfCategories();
             bookShelfs.map(bookShelf => {
                 bookShelf.books = books.filter(book => book.shelf === bookShelf.name);
             });
