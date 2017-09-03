@@ -22,6 +22,7 @@ class SearchBar extends Component {
         )
     }
 }
+
 SearchBar.propTypes = {
     onUpdateSearchTerm: PropTypes.func.isRequired
 };

@@ -13,10 +13,11 @@ class SearchResults extends Component {
                 <ol className="books-grid">
                     {
                         this.props.books.map((book, index) => {
-                            if(book.shelf===undefined){
-                                book.shelf="none";
+                            if (book.shelf === undefined) {
+                                book.shelf = "none";
                             }
-                            return <li key={index}><Book book={book} bookCategories={this.props.bookCategories} swapBookFromBookShelf={this.props.swapBookFromBookShelf}/></li>
+                            return <li key={index}><Book book={book} bookCategories={this.props.bookCategories}
+                                                         swapBookFromBookShelf={this.props.swapBookFromBookShelf}/></li>
                         })
                     }
                 </ol>
@@ -26,8 +27,8 @@ class SearchResults extends Component {
 }
 
 SearchResults.propTypes = {
-    books:PropTypes.array.isRequired,
-    swapBookFromBookShelf:PropTypes.func.isRequired
+    books: PropTypes.array.isRequired,
+    swapBookFromBookShelf: PropTypes.func.isRequired
 
 };
 

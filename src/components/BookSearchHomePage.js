@@ -30,15 +30,17 @@ class BookSearchHomePage extends Component {
         return (
             <div className="search-books">
                 <SearchBar onUpdateSearchTerm={this.updateSearchTerm}/>
-                <SearchResults books={this.state.books} bookCategories={this.props.getBookCategories()} swapBookFromBookShelf={this.props.swapBookFromBookShelf}/>
+                <SearchResults books={this.state.books} bookCategories={this.props.getBookCategories()}
+                               swapBookFromBookShelf={this.props.swapBookFromBookShelf}/>
             </div>
         )
 
     }
 }
+
 BookSearchHomePage.propTypes = {
-    getBookCategories:PropTypes.func.isRequired,
-    swapBookFromBookShelf:PropTypes.func.isRequired
+    getBookCategories: PropTypes.func.isRequired,
+    swapBookFromBookShelf: PropTypes.func.isRequired
 
 };
 

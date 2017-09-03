@@ -22,7 +22,7 @@ class Book extends Component {
         return (
             <div className="book">
                 <div className="book-top">
-                    <Link to={"/book/"+this.props.book.id}>
+                    <Link to={"/book/" + this.props.book.id}>
                         <div className="book-cover" style={{
                             width: 128,
                             height: 193,
@@ -38,6 +38,7 @@ class Book extends Component {
         )
     }
 }
+
 Book.propTypes = {
     book: PropTypes.shape({
         title: PropTypes.string.isRequired,

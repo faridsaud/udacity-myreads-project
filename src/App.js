@@ -12,6 +12,7 @@ class BooksApp extends React.Component {
     state = {
         bookShelfs: []
     };
+
     removeBookFromBookShelf = (bookId, bookShelfName) => {
         let bookShelfs = this.state.bookShelfs;
         let bookShelf = bookShelfs.find(bookShelf => bookShelf.name === bookShelfName);
@@ -38,10 +39,10 @@ class BooksApp extends React.Component {
 
     verifyBookExistanceInBookShelf = (bookId, bookShelfName) => {
         let bookShelf = this.state.bookShelfs.find(bookShelf => bookShelf.name === bookShelfName);
-        if(bookShelf){
+        if (bookShelf) {
             let book = bookShelf.books.find(book => book.id === bookId);
             return !!book;
-        }else{
+        } else {
             return false;
         }
 

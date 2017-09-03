@@ -4,15 +4,15 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 
-class BookActionButton extends Component{
+class BookActionButton extends Component {
 
-    render(){
+    render() {
         return (
             <div className="book-shelf-changer">
                 <select value={this.props.book.shelf} onChange={this.props.onUpdateBookCategory}>
                     <option value="none" disabled>Move to...</option>
                     {
-                        this.props.bookCategories.map((bookCategory, index) =>{
+                        this.props.bookCategories.map((bookCategory, index) => {
                             return <option key={index} value={bookCategory.name}>{bookCategory.displayName}</option>
 
                         })
@@ -23,9 +23,10 @@ class BookActionButton extends Component{
         )
     }
 }
+
 BookActionButton.propTypes = {
-    bookCategories:PropTypes.array.isRequired,
+    bookCategories: PropTypes.array.isRequired,
     onUpdateBookCategory: PropTypes.func.isRequired,
-    book:PropTypes.object.isRequired
+    book: PropTypes.object.isRequired
 };
 export default BookActionButton;

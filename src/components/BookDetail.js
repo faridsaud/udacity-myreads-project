@@ -38,7 +38,7 @@ class BookDetail extends Component {
                                 <CardHeader title={book.title} subtitle={book.subtitle}
                                             avatar={url}
                                 />
-                                <Divider />
+                                <Divider/>
                                 <CardText>
                                     {book.description}
                                 </CardText>

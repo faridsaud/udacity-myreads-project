@@ -17,7 +17,9 @@ class BookShelf extends Component {
                     <ol className="books-grid">
                         {
                             this.props.bookShelf.books.map((book, index) => {
-                                return <li key={index}><Book book={book} bookCategories={this.props.bookCategories} swapBookFromBookShelf={this.props.swapBookFromBookShelf}/></li>
+                                return <li key={index}><Book book={book} bookCategories={this.props.bookCategories}
+                                                             swapBookFromBookShelf={this.props.swapBookFromBookShelf}/>
+                                </li>
                             })
                         }
                     </ol>
@@ -26,14 +28,15 @@ class BookShelf extends Component {
         )
     }
 }
+
 Book.propTypes = {
     bookShelf: PropTypes.shape({
         name: PropTypes.string.isRequired,
         displayName: PropTypes.string.isRequired,
         books: PropTypes.array.isRequired
     }),
-    bookCategories:PropTypes.array.isRequired,
-    swapBookFromBookShelf:PropTypes.func.isRequired
+    bookCategories: PropTypes.array.isRequired,
+    swapBookFromBookShelf: PropTypes.func.isRequired
 
 }
 export default BookShelf;
