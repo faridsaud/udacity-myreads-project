@@ -16,14 +16,15 @@ class SearchResults extends Component {
                         this.props.books.map((book, index) => {
                             if (book.shelf === undefined) {
                                 let bookShelf = this.props.searchBookShelfOfBook(book);
-                                if(bookShelf){
+                                if (bookShelf) {
                                     book.shelf = bookShelf;
-                                }else{
+                                } else {
                                     book.shelf = "none";
                                 }
                             }
 
-                            return <li key={index}><Book book={book} bookShelfCategories={this.props.bookShelfCategories}
+                            return <li key={index}><Book book={book}
+                                                         bookShelfCategories={this.props.bookShelfCategories}
                                                          moveBookToBookShelf={this.props.moveBookToBookShelf}/></li>
                         })
                     }
