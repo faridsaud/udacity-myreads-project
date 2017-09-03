@@ -16,8 +16,8 @@ class SearchResults extends Component {
                             if (book.shelf === undefined) {
                                 book.shelf = "none";
                             }
-                            return <li key={index}><Book book={book} bookCategories={this.props.bookCategories}
-                                                         swapBookFromBookShelf={this.props.swapBookFromBookShelf}/></li>
+                            return <li key={index}><Book book={book} bookShelfCategories={this.props.bookShelfCategories}
+                                                         moveBookToBookShelf={this.props.moveBookToBookShelf}/></li>
                         })
                     }
                 </ol>
@@ -28,7 +28,8 @@ class SearchResults extends Component {
 
 SearchResults.propTypes = {
     books: PropTypes.array.isRequired,
-    swapBookFromBookShelf: PropTypes.func.isRequired
+    bookShelfCategories: PropTypes.array.isRequired,
+    moveBookToBookShelf: PropTypes.func.isRequired
 
 };
 

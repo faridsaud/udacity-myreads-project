@@ -2,7 +2,6 @@
  * Created by farid on 8/21/2017.
  */
 import React, {Component} from 'react';
-import PropTypes from 'prop-types';
 import * as BooksAPI from '../BooksAPI';
 import {
     Card, CardActions, CardHeader, CardText, Chip, Divider, MuiThemeProvider, RaisedButton
@@ -67,9 +66,5 @@ class BookDetail extends Component {
         )
     }
 }
-
-BookDetail.propTypes = {
-    book: PropTypes.object.isRequired
-};
 
 export default BookDetail;

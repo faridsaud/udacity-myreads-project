@@ -13,6 +13,10 @@ class BookSearchHomePage extends Component {
         books: []
     };
 
+    /**
+     * @description Update the term used to search books
+     * @param {String} searchTerm
+     */
     updateSearchTerm = (searchTerm) => {
         this.setState({
             searchTerm
@@ -29,16 +33,16 @@ class BookSearchHomePage extends Component {
         return (
             <div className="search-books">
                 <SearchBar onUpdateSearchTerm={this.updateSearchTerm}/>
-                <SearchResults books={this.state.books} bookCategories={this.props.getBookCategories()}
-                               swapBookFromBookShelf={this.props.swapBookFromBookShelf}/>
+                <SearchResults books={this.state.books} bookShelfCategories={this.props.bookShelfCategories}
+                               moveBookToBookShelf={this.props.moveBookToBookShelf}/>
             </div>
         )
     }
 }
 
 BookSearchHomePage.propTypes = {
-    getBookCategories: PropTypes.func.isRequired,
-    swapBookFromBookShelf: PropTypes.func.isRequired
+    bookShelfCategories: PropTypes.array.isRequired,
+    moveBookToBookShelf: PropTypes.func.isRequired
 
 };
 

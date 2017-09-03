@@ -13,6 +13,11 @@ class BooksApp extends React.Component {
         bookShelfs: []
     };
 
+    /**
+     * @description Remove a book from a book shelf and update state
+     * @param {String} bookId
+     * @param {String} bookShelfName
+     */
     removeBookFromBookShelf = (bookId, bookShelfName) => {
         let bookShelfs = this.state.bookShelfs;
         let bookShelf = bookShelfs.find(bookShelf => bookShelf.name === bookShelfName);
@@ -20,6 +25,12 @@ class BooksApp extends React.Component {
         this.setState(bookShelfs);
     };
 
+
+    /**
+     * @description Add a book to a book shelf and update state
+     * @param {Object} book
+     * @param {String} bookShelfName
+     */
     addBookToBookShelf = (book, bookShelfName) => {
         let bookShelfs = this.state.bookShelfs;
         let bookShelf = bookShelfs.find(bookShelf => bookShelf.name === bookShelfName);
@@ -28,7 +39,13 @@ class BooksApp extends React.Component {
         this.setState(bookShelfs);
     };
 
-    swapBookFromBookShelf = (book, destinyBookShelfName) => {
+
+    /**
+     * @description Move a book to a new book shelf
+     * @param {Object} book
+     * @param {String} destinyBookShelfName
+     */
+    moveBookToBookShelf = (book, destinyBookShelfName) => {
         if (book.shelf && this.verifyBookExistanceInBookShelf(book.id, book.shelf)) {
             this.removeBookFromBookShelf(book.id, book.shelf);
         }
@@ -37,6 +54,12 @@ class BooksApp extends React.Component {
         }
     };
 
+    /**
+     * @description Verify if a book exists in the book shelf
+     * @param {String} bookId
+     * @param {String} bookShelfName
+     * @returns {Boolean} exist in book shelf
+     */
     verifyBookExistanceInBookShelf = (bookId, bookShelfName) => {
         let bookShelf = this.state.bookShelfs.find(bookShelf => bookShelf.name === bookShelfName);
         if (bookShelf) {
@@ -48,7 +71,11 @@ class BooksApp extends React.Component {
 
     };
 
-    getBookCategories = () => {
+    /**
+     * @description Returns all the available book shelf's categories
+     * @returns {Array} Book shelfs name and display name
+     */
+    getBookShelfCategories = () => {
         return this.state.bookShelfs.map(bookShelf => {
             return {
                 name: bookShelf.name,
@@ -73,12 +100,12 @@ class BooksApp extends React.Component {
         return (
             <div className="app">
                 <Route exact path='/' render={() => (
-                    <HomePage bookShelfs={this.state.bookShelfs} getBookCategories={this.getBookCategories}
-                              swapBookFromBookShelf={this.swapBookFromBookShelf}/>
+                    <HomePage bookShelfs={this.state.bookShelfs} bookShelfCategories={this.getBookShelfCategories()}
+                              moveBookToBookShelf={this.moveBookToBookShelf}/>
                 )}/>
                 <Route path='/search' render={() => (
-                    <BookSearchHomePage getBookCategories={this.getBookCategories}
-                                        swapBookFromBookShelf={this.swapBookFromBookShelf}/>
+                    <BookSearchHomePage bookShelfCategories={this.getBookShelfCategories()}
+                                        moveBookToBookShelf={this.moveBookToBookShelf}/>
                 )}/>
                 <Route path='/book/:id' render={(props) => (
                     <BookDetail match={props.match}/>

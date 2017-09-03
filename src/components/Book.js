@@ -9,12 +9,16 @@ import {Link} from "react-router-dom";
 
 class Book extends Component {
 
+    /**
+     * @description Update the book's book shelf category
+     * @param {Object} event
+     */
     updateBookCategory = (event) => {
         let book = this.props.book;
         let shelf = event.target.value;
         BooksAPI.update(book, shelf)
             .then(() => {
-                this.props.swapBookFromBookShelf(book, shelf);
+                this.props.moveBookToBookShelf(book, shelf);
             })
     };
 
@@ -30,7 +34,7 @@ class Book extends Component {
                         }}/>
                     </Link>
                     <BookActionButton onUpdateBookCategory={this.updateBookCategory}
-                                      bookCategories={this.props.bookCategories} book={this.props.book}/>
+                                      bookShelfCategories={this.props.bookShelfCategories} book={this.props.book}/>
                 </div>
                 <div className="book-title">{this.props.book.title}</div>
                 <div className="book-authors">{this.props.book.authors}</div>
@@ -46,8 +50,8 @@ Book.propTypes = {
         authors: PropTypes.string.isRequired,
         imageLinks: PropTypes.object.isRequired
     }),
-    bookCategories: PropTypes.array.isRequired,
-    swapBookFromBookShelf: PropTypes.func.isRequired
+    bookShelfCategories: PropTypes.array.isRequired,
+    moveBookToBookShelf: PropTypes.func.isRequired
 };
 
 export default Book;
