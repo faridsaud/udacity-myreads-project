@@ -8,7 +8,6 @@ import PropTypes from 'prop-types';
 class SearchResults extends Component {
 
     render() {
-        console.log(this.props.books);
         return (
             <div className="search-books-results">
                 <ol className="books-grid">

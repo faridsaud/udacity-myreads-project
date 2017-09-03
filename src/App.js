@@ -60,7 +60,6 @@ class BooksApp extends React.Component {
      * @param {String} destinyBookShelfName
      */
     moveBookToBookShelf = (book, destinyBookShelfName) => {
-        debugger;
         if (book.shelf && this.verifyBookExistanceInBookShelf(book.id, book.shelf)) {
             this.removeBookFromBookShelf(book.id, book.shelf);
         }
